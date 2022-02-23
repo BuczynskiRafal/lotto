@@ -17,12 +17,7 @@ def get_six_random_numbers() -> List[int]:
 
     :return: list: Sorted list of six numbers.
     """
-    numbers = []
-    while len(numbers) != 6:
-        number = random.randint(1, 49)
-        if number not in numbers:
-            numbers.append(number)
-    return sorted(numbers)
+    return sorted(random.sample(range(1, 50), k=6))
 
 
 def how_many_draws_to_hit_six() -> str:
@@ -31,13 +26,12 @@ def how_many_draws_to_hit_six() -> str:
     :return:
     str: The number of draws, the cost of tickets and the time needed to win are given in years.
     """
-    counter = 0
+    counter = 1
     while True:
         cross_number = get_six_random_numbers()
         lotto_draw = get_six_random_numbers()
         if not cross_number == lotto_draw:
             counter += 1
-            print(counter)
         else:
             return f"Ilość losowań: {counter}, " \
                    f"koszt wszytskich losowań: {counter * 3} pln, " \
@@ -45,4 +39,4 @@ def how_many_draws_to_hit_six() -> str:
 
 
 if __name__ == '__main__':
-    how_many_draws_to_hit_six()
+    print(how_many_draws_to_hit_six())
